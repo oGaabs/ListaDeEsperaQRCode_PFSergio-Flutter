@@ -5,13 +5,14 @@ import 'dart:async';
 import 'dart:convert';
 
 // ignore: constant_identifier_names
-String URL = "https://www.slmm.com.br/CTC/getLista.php";
+String URL_PESSOA = "https://www.slmm.com.br/CTC/insere.php";
 
-Future<String> fetchData() async {
+Future<String> inserirPessoa() async {
   Map data = {'id': '200', 'nome': "Gabs"};
+  String horario = DateFormat("yy/MM/dd HH:mm:ss").toString();
   String body = json.encode(data);
 
-  var response = await http.post(Uri.parse(URL),
+  var response = await http.post(Uri.parse(URL_PESSOA),
       headers: {"Content-Type": "application/json"}, body: body);
   if (response.statusCode != 200) throw Exception('Erro inesperado...');
 
@@ -78,7 +79,7 @@ class _PostFotoState extends State<PostFoto> {
         ElevatedButton(
           onPressed: () {
             setState(() {
-              _dadosF = fetchData();
+              _dadosF = inserirPessoa();
             });
           },
           child: const Text('Create Data'),
