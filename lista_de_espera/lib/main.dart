@@ -4,6 +4,7 @@ import 'package:lista_de_espera/screens/homeScreen.dart';
 void main() {
   runApp(const MaterialApp(
     title: "Espera Ai",
+    debugShowCheckedModeBanner: false,
     home: HomeScreen(),
   ));
 }

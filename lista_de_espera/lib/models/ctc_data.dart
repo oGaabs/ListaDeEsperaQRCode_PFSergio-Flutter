@@ -15,6 +15,7 @@ class ctcData {
     return ctcData(json['ra'] as String, json['data'] as String,
         json['lati'] as String, json['longi'] as String);
   }
+  
   @override
   String toString() {
     // TODO: implement toString

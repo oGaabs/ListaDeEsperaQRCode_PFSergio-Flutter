@@ -1,9 +1,8 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:lista_de_espera/screens/listaEspera.dart';
-
-import 'lista_espera.dart';
+import 'package:lista_de_espera/screens/pages/inserir_page.dart';
+import 'package:lista_de_espera/screens/pages/listaespera_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,86 +18,28 @@ class _HomeScreenState extends State<HomeScreen> {
   int index = 0; //variável do tipo int inicializada com 0
 
   List<Widget> pages = [
-    ListaDeEspera(),
-    ListaDeEspera(),
-    ListaDeEspera()
+    const ListaEspera(),
+    const InserirPessoa(),
+    const ListaEspera()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Exercício seleciona item'),
-        backgroundColor: Colors.brown,
+        title: const Text('PF_Sergio CrudAPI - Ra:21429'),
+        backgroundColor: Color.fromARGB(255, 31, 29, 29),
       ),
       body: PageView(
         controller: _pageController,
-        children: pages/*[
-          
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Imagem 1!',
-                  style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Image.network(
-                    'https://i0.wp.com/jornal.usp.br/wp-content/uploads/2022/07/07072022_galaxias_ancias.jpg?fit=768%2C403&ssl=1')
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Imagem 2!',
-                  style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.indigo),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Image.network(
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Starsinthesky.jpg/1200px-Starsinthesky.jpg')
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Imagem 3!',
-                  style: TextStyle(
-                      fontSize: 40, //tamanho da fonte
-                      fontWeight: FontWeight.bold, //peso da fonte (negrito)
-                      color: Colors.cyan // cor da fonte (ciano)
-                      ),
-                ),
-                const SizedBox(
-                  height: 50,
-                ), //parecido com Container, nesse caso cria um espaço em branco entre o texto e a imagem.
-                Image.network(
-                    'https://i0.wp.com/jornal.usp.br/wp-content/uploads/20170718_00_IAG.jpg?fit=800%2C420&ssl=1')
-              ],
-            ),
-          ),
-        ]*/,
+        children:
+            pages //lista de widgets que será exibida na tela, nesse caso, 3 widgets
+        ,
       ),
       bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color.fromARGB(214, 20, 10, 37),
+          selectedItemColor: Colors.yellow,
+          unselectedItemColor: Colors.white,
           currentIndex:
               index, //índice dos items da BottomNavigationBar, recebe a variável index criada no início da classe.
           onTap: (int page) {
@@ -115,16 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Lista',
+              icon: Icon(Icons.list),
+              label: 'Lista de Espera',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Post',
+              icon: Icon(Icons.person_add),
+              label: 'Adicionar',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.account_balance),
-              label: 'BANANA',
+              icon: Icon(Icons.person_search_rounded),
+              label: 'Encontrar',
             ),
           ]),
     );
