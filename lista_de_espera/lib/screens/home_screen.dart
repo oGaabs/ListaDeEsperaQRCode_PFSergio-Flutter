@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lista_de_espera/screens/pages/encontrar_page.dart';
 import 'package:lista_de_espera/screens/pages/inserir_page.dart';
 import 'package:lista_de_espera/screens/pages/listaespera_page.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final String qrCode;
+  const HomeScreen(this.qrCode, {super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -16,14 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int index = 0; //variável do tipo int inicializada com 0
 
-  List<Widget> pages = [
-    const ListaEspera(),
-    const InserirPessoa(),
-    const EncontrarPessoa()
-  ];
-
   @override
   Widget build(BuildContext context) {
+    List<Widget> pages = [
+      ListaEspera(widget.qrCode),
+      InserirPessoa(widget.qrCode)
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('PF_Sergio CrudAPI - Ra: 21429 21723'),
@@ -31,7 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: PageView(
         controller: _pageController,
-        children: pages, //lista de widgets que será exibida na tela, nesse caso, 3 widgets
+        children:
+            pages, //lista de widgets que será exibida na tela, nesse caso, 3 widgets
       ),
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: const Color.fromARGB(214, 20, 10, 37),
@@ -59,11 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person_add),
               label: 'Adicionar',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_search_rounded),
-              label: 'Encontrar',
-            ),
+            )
           ]),
     );
   }

@@ -6,28 +6,9 @@ import 'dart:convert';
 
 import 'package:lista_de_espera/models/lista_data.dart';
 
-Map<String, String> headerOnlyJSON = {
-  "Content-Type": "application/json; charset=UTF-8"
-};
-
-// Inserir uma pessoa na lista de espera
-Future<String> inserirPessoa(String nome) async {
-  PessoaData listaData = PessoaData(id: null, nome: nome, data: null);
-  Map data = listaData.toJsonInserir();
-  String body = json.encode(data);
-
-  var response = await http.post(
-      Uri.parse("https://www.slmm.com.br/CTC/insere.php"),
-      headers: headerOnlyJSON,
-      body: body);
-
-  if (response.statusCode != 200) throw Exception('Erro inesperado');
-
-  return response.body;
-}
-
 class InserirPessoa extends StatefulWidget {
-  const InserirPessoa({Key? key}) : super(key: key);
+  final String qrCode;
+  const InserirPessoa(this.qrCode, {Key? key}) : super(key: key);
 
   @override
   _InserirPessoaState createState() => _InserirPessoaState();
@@ -56,6 +37,28 @@ class _InserirPessoaState extends State<InserirPessoa> {
   }
 
   Widget buildForm() {
+    String url = widget.qrCode;
+
+    Map<String, String> headerOnlyJSON = {
+      "Content-Type": "application/json; charset=UTF-8"
+    };
+
+// Inserir uma pessoa na lista de espera
+    Future<String> inserirPessoa(String nome) async {
+      PessoaData listaData = PessoaData(id: null, nome: nome, data: null);
+      Map data = listaData.toJsonInserir();
+      String body = json.encode(data);
+
+      var response = await http.post(
+          Uri.parse(url+"insere.php"),
+          headers: headerOnlyJSON,
+          body: body);
+
+      if (response.statusCode != 200) throw Exception('Erro inesperado');
+
+      return response.body;
+    }
+
     return Container(
         padding: const EdgeInsets.all(5),
         child: Container(

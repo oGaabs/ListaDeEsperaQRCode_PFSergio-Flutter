@@ -8,32 +8,7 @@ import 'dart:convert';
 
 import 'package:lista_de_espera/models/lista_data.dart';
 import 'package:lista_de_espera/screens/pages/pessoa_screen.dart';
-
-Map<String, String> headerOnlyJson = {
-  "Content-Type": "application/json; charset=UTF-8"
-};
-
-// puxa dados da api e os coloca em uma lista para ser resolvida (Future)
-Future<List<PessoaData>> getListaEspera() async {
-  var response = await http.get(
-      Uri.parse("https://www.slmm.com.br/CTC/getLista.php"),
-      headers: headerOnlyJson);
-
-  if (response.statusCode != 200) throw Exception('Erro inesperado...');
-
-  List jsonResponse = json.decode(response.body);
-  return jsonResponse.map((data) => PessoaData.fromJson(data)).toList();
-}
-
-// deletar uma pessoa da lista por id
-Future<String> deletarPessoaById(String id) async {
-  var response = await http.delete(
-      Uri.parse("https://www.slmm.com.br/CTC/delete.php?id=$id"),
-      headers: headerOnlyJson);
-  if (response.statusCode != 200) throw Exception('Erro inesperado...');
-
-  return response.body; //json.decode(response.body);
-}
+import 'package:lista_de_espera/screens/qrcode_screen.dart';
 
 // deletar uma pessoa da lista por id
 /*Future<String> deletarPessoaByName(String nome) async {
@@ -46,14 +21,14 @@ Future<String> deletarPessoaById(String id) async {
 }*/
 
 class ListaEspera extends StatefulWidget {
-  const ListaEspera({Key? key}) : super(key: key);
+  final String qrCode;
+  ListaEspera(this.qrCode, {Key? key}) : super(key: key);
 
   @override
   _ListaEsperaState createState() => _ListaEsperaState();
 }
 
 class _ListaEsperaState extends State<ListaEspera> {
-  late Future<List<PessoaData>> futureLista;
   late Future<PessoaData> futurePessoa;
   List<String> emojis = [
     '🤔',
@@ -71,13 +46,37 @@ class _ListaEsperaState extends State<ListaEspera> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    futureLista = getListaEspera();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    String url = widget.qrCode;
+
+    Map<String, String> headerOnlyJson = {
+      "Content-Type": "application/json; charset=UTF-8"
+    };
+
+// puxa dados da api e os coloca em uma lista para ser resolvida (Future)
+    Future<List<PessoaData>> getListaEspera() async {
+      var response = await http.get(
+          Uri.parse(url + "getLista.php"),
+          headers: headerOnlyJson);
+
+      if (response.statusCode != 200) throw Exception('Erro inesperado...');
+
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((data) => PessoaData.fromJson(data)).toList();
+    }
+
+// deletar uma pessoa da lista por id
+    Future<String> deletarPessoaById(String id) async {
+      var response = await http.delete(
+          Uri.parse(url + "delete.php?id=$id"),
+          headers: headerOnlyJson);
+      if (response.statusCode != 200) throw Exception('Erro inesperado...');
+
+      return response.body; //json.decode(response.body);
+    }
+
+    late Future<List<PessoaData>> futureLista = getListaEspera();
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 104, 20, 156),
@@ -112,7 +111,8 @@ class _ListaEsperaState extends State<ListaEspera> {
                         return GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: ((context) => PessoaScreen(id))));
+                                  builder: ((context) =>
+                                      PessoaScreen(id, widget.qrCode))));
                             },
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -159,7 +159,8 @@ class _ListaEsperaState extends State<ListaEspera> {
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: ((context) =>
-                                                          PessoaScreen(id))));
+                                                          PessoaScreen(id,
+                                                              widget.qrCode))));
                                             },
                                             icon: Icon(Icons.info,
                                                 color: Colors.purple.shade200

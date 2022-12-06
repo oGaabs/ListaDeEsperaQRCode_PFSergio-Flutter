@@ -7,27 +7,10 @@ import 'dart:convert';
 
 import 'package:lista_de_espera/models/lista_data.dart';
 
-Map<String, String> headerOnlyJson = {
-  "Content-Type": "application/json; charset=UTF-8"
-};
-
-// pegar usuario pelo id
-Future<PessoaData> getPessoaPeloId(String id) async {
-  var response = await http.get(
-      Uri.parse("https://www.slmm.com.br/CTC/getDetalhe.php?id=$id"),
-      headers: headerOnlyJson);
-
-  if (response.statusCode != 200) throw Exception('Erro inesperado...');
-  // get id from response
-  final Map person = json.decode(response.body)[0];
-
-  return PessoaData(
-      id: person["id"].toString(), nome: person["nome"], data: person["data"]);
-}
-
 class PessoaScreen extends StatefulWidget {
   final String id;
-  const PessoaScreen(this.id, {super.key});
+  final String qrCode;
+  const PessoaScreen(this.id, this.qrCode, {super.key});
 
   @override
   _PessoaScreenState createState() => _PessoaScreenState();
@@ -46,6 +29,26 @@ class _PessoaScreenState extends State<PessoaScreen> {
   }
 
   Widget buildForm() {
+    Map<String, String> headerOnlyJson = {
+      "Content-Type": "application/json; charset=UTF-8"
+    };
+
+// pegar usuario pelo id
+    Future<PessoaData> getPessoaPeloId(String id) async {
+      var response = await http.get(
+          Uri.parse("https://www.slmm.com.br/CTC/getDetalhe.php?id=$id"),
+          headers: headerOnlyJson);
+
+      if (response.statusCode != 200) throw Exception('Erro inesperado...');
+      // get id from response
+      final Map person = json.decode(response.body)[0];
+
+      return PessoaData(
+          id: person["id"].toString(),
+          nome: person["nome"],
+          data: person["data"]);
+    }
+
     Future<PessoaData> pessoaF = getPessoaPeloId(widget.id);
     return Container(
         padding: const EdgeInsets.all(5),
@@ -83,14 +86,16 @@ class _PessoaScreenState extends State<PessoaScreen> {
                     return Center(
                       child: Center(
                           child: ListTile(
-                              tileColor: const Color.fromARGB(255, 208, 163, 216),
+                              tileColor:
+                                  const Color.fromARGB(255, 208, 163, 216),
                               shape: RoundedRectangleBorder(
                                 //<-- SEE HERE
                                 side: const BorderSide(width: 2),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               leading: CircleAvatar(
-                                backgroundColor: const Color.fromARGB(255, 84, 0, 122),
+                                backgroundColor:
+                                    const Color.fromARGB(255, 84, 0, 122),
                                 child: Text(
                                   primeiraLetra,
                                   style: const TextStyle(
