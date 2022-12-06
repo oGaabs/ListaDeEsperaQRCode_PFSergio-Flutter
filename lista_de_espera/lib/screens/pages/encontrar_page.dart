@@ -1,38 +1,16 @@
 import 'package:flutter/material.dart';
-
-import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import 'dart:async';
-import 'dart:convert';
 
-getInfoPessoaById(int id) async {
-  var response = await http.get(
-      Uri.parse(
-          "https://www.slmm.com.br/CTC/getDetalhe.php?id=$id"),
-      headers: {"Content-Type": "application/json"});
-  if (response.statusCode != 200) throw Exception('Erro inesperado...');
+import 'pessoa_screen.dart';
 
-  return response.body; //json.decode(response.body);
-}
-
-Future<String> getInfoPessoaByNome(String nome) async {
-  var response = await http.get(
-      Uri.parse("https://www.slmm.com.br/CTC/getDetalhe.php?nome=$nome"),
-      headers: {"Content-Type": "application/json"});
-
-  if (response.statusCode != 200) throw Exception('Erro inesperado...');
-
-  return response.body; //json.decode(response.body);
-}
-
-class LoginPessoa extends StatefulWidget {
-  const LoginPessoa({Key? key}) : super(key: key);
+class EncontrarPessoa extends StatefulWidget {
+  const EncontrarPessoa({Key? key}) : super(key: key);
 
   @override
-  _LoginPessoaState createState() => _LoginPessoaState();
+  _EncontrarPessoaState createState() => _EncontrarPessoaState();
 }
 
-class _LoginPessoaState extends State<LoginPessoa> {
+class _EncontrarPessoaState extends State<EncontrarPessoa> {
   final nomeController = TextEditingController();
   Future<String>? _dadosF;
 
@@ -46,7 +24,10 @@ class _LoginPessoaState extends State<LoginPessoa> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Post de dados")),
+        appBar: AppBar(
+            backgroundColor: const Color.fromARGB(255, 104, 20, 156),
+            title: const Text("Lista de Espera"),
+            centerTitle: mounted),
         body: Container(
           padding: const EdgeInsets.all(5),
           child: Column(children: [
@@ -75,8 +56,9 @@ class _LoginPessoaState extends State<LoginPessoa> {
                           TextButton(
                               onPressed: () {
                                 setState(() {
-                                  _dadosF =
-                                      getInfoPessoaByNome(nomeController.text);
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: ((context) =>
+                                          PessoaScreen(nomeController.text))));
                                 });
                                 Navigator.of(context).pop();
                               },

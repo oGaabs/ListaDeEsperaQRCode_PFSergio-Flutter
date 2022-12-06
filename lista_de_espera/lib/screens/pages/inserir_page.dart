@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:lista_de_espera/models/lista_data.dart';
+
+Map<String, String> headerOnlyJSON = {
+  "Content-Type": "application/json; charset=UTF-8"
+};
+
+// Inserir uma pessoa na lista de espera
 Future<String> inserirPessoa(String nome) async {
-  String horario =
-      DateFormat("dd/MM/yy HH:mm:ss").format(DateTime.now());
-  String body = json.encode({"nome": nome, "data": horario});
+  PessoaData listaData = PessoaData(id: null, nome: nome, data: null);
+  Map data = listaData.toJsonInserir();
+  String body = json.encode(data);
 
   var response = await http.post(
-      await Uri.parse("https://www.slmm.com.br/CTC/insere.php"),
-      headers: {"Accept": "application/json"},
+      Uri.parse("https://www.slmm.com.br/CTC/insere.php"),
+      headers: headerOnlyJSON,
       body: body);
 
-  print(response.body);
-  if (response.statusCode != 200) throw Exception('Erro inesperado...');
+  if (response.statusCode != 200) throw Exception('Erro inesperado');
 
-  return response.body; //json.decode(response.body);
+  return response.body;
 }
 
 class InserirPessoa extends StatefulWidget {
@@ -43,7 +48,7 @@ class _InserirPessoaState extends State<InserirPessoa> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 104, 20, 156),
+          backgroundColor: const Color.fromARGB(255, 104, 20, 156),
           title: const Text("POST dos dados"),
           centerTitle: mounted,
         ),
@@ -55,7 +60,7 @@ class _InserirPessoaState extends State<InserirPessoa> {
         padding: const EdgeInsets.all(5),
         child: Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child: Form(
               child: Padding(
             padding:
@@ -73,7 +78,6 @@ class _InserirPessoaState extends State<InserirPessoa> {
                       hintText: 'Informe o seu nome'),
                 ),
                 ElevatedButton(
-                    child: const Text('Inserir'),
                     onPressed: (() {
                       showDialog(
                         context: context,
@@ -100,7 +104,8 @@ class _InserirPessoaState extends State<InserirPessoa> {
                           );
                         },
                       );
-                    }))
+                    }),
+                    child: const Text('Inserir'))
               ],
             ),
           )),
