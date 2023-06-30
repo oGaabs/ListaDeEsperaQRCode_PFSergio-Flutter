@@ -1,32 +1,54 @@
-# Lista de Espera
+<div align="center"> 
+   <img align="center" alt="Logo-Qrcode" src="lista_de_espera/assets/screenshots/logo.png" width="50%" />
+</div>
 
-Este repositório contém um aplicativo Flutter para gerenciar uma lista de espera usando leitura de QR Code. O aplicativo permite que os usuários sejam adicionados à lista de espera ou removidos, com base no QR Code lido.
+<p align="center">
+  <strong>
+    <a href="#-sobre">Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-Como%20executar%2o%2aplicativo">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-time">Time</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  </strong> 
+</p>
 
-## Screenshots
+## 💻 Sobre
 
-![Lista de Espera](screenshots/lista_espera.png)
-![Inserir Pessoa](screenshots/inserir_pessoa.png)
-![QR Code](screenshots/qr_code.png)
+<div>
+ <img align="right" alt="Project Banner" title="" src="lista_de_espera/assets/screenshots/qrcode_api.png" width="100px" />
 
-## Funcionalidades
+Este repositório contém um aplicativo Flutter para gerenciar uma lista de espera usando leitura de QR Code. 
+
+O aplicativo permite que os usuários sejam adicionados à lista de espera ou removidos, com base no QR Code lido, assim como as informações do usuario, consumindo uma api de lista de espera.
+
+</div>
+
+___
+
+## 🎨 Layout
+A seguir são exibidos os layouts da aplicação:
+
+![Lista de Espera](lista_de_espera/assets/screenshots/smartphones.png)
+
+## 📱 Funcionalidades
 
 - Leitura de QR Code
 - Gerenciamento de listas de espera
 - Adição ou remoção de uma pessoa na lista de espera
 
-## Requisitos
+## 🧪 Tecnologias
 
 - Flutter 2.0 ou superior
 - Dart 2.12 ou superior
 
-## Como executar o aplicativo
+## 👨‍💻 Como executar o aplicativo
 
 1. Clone este repositório para o seu computador.
 2. Certifique-se de ter o Flutter e o Dart instalados corretamente em seu ambiente de desenvolvimento.
 3. Abra um terminal na pasta raiz do projeto.
 4. Execute o comando `flutter run` para iniciar o aplicativo.
 
-## Estrutura do Código
+## 📁 Estrutura do Código
 
 O código está organizado da seguinte forma:
 
@@ -37,14 +59,14 @@ O código está organizado da seguinte forma:
 - A classe `QrCodeScreen` exibe a tela de leitura de QR Code, onde o usuário pode escanear um QR Code para obter o texto e usá-lo no aplicativo.
 - A pasta `lib/models` mantem o modelos que representam a lista e pessoas.
 
-## Dependências
+## 🗃 Dependências
 
 Este aplicativo utiliza as seguintes dependências:
 
 - `flutter_barcode_scanner` (versão 2.0.0) - Uma biblioteca Flutter para leitura de QR Code.
 - `qr_flutter` (versão 5.0.0) - Uma biblioteca Flutter para renderizar QR Codes.
 
-## Contributing
+## 🎁 Contributing
 
 Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, fique à vontade para abrir uma nova issue ou enviar um pull request.
 
@@ -65,13 +87,13 @@ Contribuições são bem-vindas! Se você encontrar algum problema ou tiver suge
 [<img alt="GitHub followers Taylor" src="https://img.shields.io/github/followers/taylorburgues?label=Follow&style=social" height="22" title="Follow me"/>](https://github.com/taylorburgues)
 [<img alt="Instagram Taylor" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white&link=instagram.com/theo_burgues/" height="22" />](https://www.instagram.com/theo_burgues/)
 
-## Equipe
+## 👥 Time
 
 * **Gabriel Santana Silva** - *Owner* - [Instagram](https://www.instagram.com/gabrielsants_dev/)
 * **Maria Clara Redin Benitez** - *Owner* - [Instagram](https://www.instagram.com/https.mariiax/)
 * **Taylor Matheus Burguês Gomes** - *Owner* - [GitHub](https://github.com/taylorburgues)
 
-## License
+## 📑 License
 
 This project is licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE).
 
