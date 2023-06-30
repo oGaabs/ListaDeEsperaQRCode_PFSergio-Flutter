@@ -66,7 +66,7 @@ Este aplicativo utiliza as seguintes dependências:
 - `flutter_barcode_scanner` (versão 2.0.0) - Uma biblioteca Flutter para leitura de QR Code.
 - `qr_flutter` (versão 5.0.0) - Uma biblioteca Flutter para renderizar QR Codes.
 
-## 🎁 Contributing
+## 🖋️ Contributing
 
 Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, fique à vontade para abrir uma nova issue ou enviar um pull request.
 
@@ -77,21 +77,15 @@ Contribuições são bem-vindas! Se você encontrar algum problema ou tiver suge
 [<img alt="Mail to Gabriel" src="https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white" height="22" title="gabriel04.ok@gmail.com" />][email]
 [<img alt="Linkedin Gabriel" src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/gabriel-santana-silva-1205461a3/" height="22" />][linkedin]
 
-#### Networks Maria:
+#### Networks Arthur:
 
-[<img alt="GitHub followers Maria" src="https://img.shields.io/github/followers/mariaxuxu?label=Follow&style=social" height="22" title="Follow me"/>](https://github.com/mariaxuxu)
-[<img alt="Instagram Maria" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white&link=instagram.com/https.mariiax/" height="22" />](https://www.instagram.com/https.mariiax/)
-
-#### Networks Taylor:
-
-[<img alt="GitHub followers Taylor" src="https://img.shields.io/github/followers/taylorburgues?label=Follow&style=social" height="22" title="Follow me"/>](https://github.com/taylorburgues)
-[<img alt="Instagram Taylor" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white&link=instagram.com/theo_burgues/" height="22" />](https://www.instagram.com/theo_burgues/)
+[<img alt="GitHub followers Arthur" src="https://img.shields.io/github/followers/mariaxuxu?label=Follow&style=social" height="22" title="Follow me"/>](https://github.com/arthur-pereira-silva)
+[<img alt="Instagram Arthur" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white&link=instagram.com/arthur_br07/" height="22" />](https://www.instagram.com/arthur_br07/)
 
 ## 👥 Time
 
 * **Gabriel Santana Silva** - *Owner* - [Instagram](https://www.instagram.com/gabrielsants_dev/)
-* **Maria Clara Redin Benitez** - *Owner* - [Instagram](https://www.instagram.com/https.mariiax/)
-* **Taylor Matheus Burguês Gomes** - *Owner* - [GitHub](https://github.com/taylorburgues)
+* **Arthur Pereira Silva** - *Owner* - [Instagram](https://www.instagram.com/arthur_br07/)
 
 ## 📑 License
 
