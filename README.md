@@ -19,7 +19,7 @@
 
 Este repositório contém um aplicativo Flutter para gerenciar uma lista de espera usando leitura de QR Code. 
 
-O aplicativo permite que os usuários sejam adicionados à lista de espera ou removidos, com base no QR Code lido, assim como as informações do usuario, consumindo uma api de lista de espera.
+O aplicativo permite que os usuários sejam adicionados à lista de espera ou removidos, com base no QR Code lido, assim como as informações do usuario, ao ler ou gerar o QR Code na tela inicial, o aplicativo passa o conteúdo do QR Code lido para a tela da Lista de Espera, onde ocorre uma chamada à API fornecida pelo QR Code para obter a lista de pessoas em espera. Essa lista é exibida na tela em forma de cards e gerenciada no aplicativo.
 
 </div>
 
@@ -64,20 +64,23 @@ O código está organizado da seguinte forma:
 Este aplicativo utiliza as seguintes dependências:
 
 - `flutter_barcode_scanner` (versão 2.0.0) - Uma biblioteca Flutter para leitura de QR Code.
-- `qr_flutter` (versão 5.0.0) - Uma biblioteca Flutter para renderizar QR Codes.
+- `qr_flutter` (versão 4.0.0) - Uma biblioteca Flutter para renderizar QR Codes.
+- `cupertino_icons` (versão 1.0.2): Ícones estilizados para o Flutter, seguindo as diretrizes do iOS. 
+- `http` (versão 0.13.5): Um pacote para fazer requisições HTTP no Flutter. 
+- `intl` (versão 0.17.0): Biblioteca de internacionalização para Flutter.
 
 ## 🖋️ Contributing
 
 Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões de melhorias, fique à vontade para abrir uma nova issue ou enviar um pull request.
 
-#### Networks Gabriel:
+#### 🌐❤ Networks Gabriel:
 
 [<img alt="GitHub followers Gabriel" src="https://img.shields.io/github/followers/PuniGC?label=Follow&style=social" height="22" title="Follow me"/>][github]
 [<img alt="Instagram Gabriel" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white&link=instagram.com/gabrielsants_dev/" height="22" />](https://www.instagram.com/gabrielsants_dev/)
 [<img alt="Mail to Gabriel" src="https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white" height="22" title="gabriel04.ok@gmail.com" />][email]
 [<img alt="Linkedin Gabriel" src="https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/gabriel-santana-silva-1205461a3/" height="22" />][linkedin]
 
-#### Networks Arthur:
+#### 🌐❤ Networks Arthur:
 
 [<img alt="GitHub followers Arthur" src="https://img.shields.io/github/followers/mariaxuxu?label=Follow&style=social" height="22" title="Follow me"/>](https://github.com/arthur-pereira-silva)
 [<img alt="Instagram Arthur" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white&link=instagram.com/arthur_br07/" height="22" />](https://www.instagram.com/arthur_br07/)
@@ -87,7 +90,7 @@ Contribuições são bem-vindas! Se você encontrar algum problema ou tiver suge
 * **Gabriel Santana Silva** - *Owner* - [Instagram](https://www.instagram.com/gabrielsants_dev/)
 * **Arthur Pereira Silva** - *Owner* - [Instagram](https://www.instagram.com/arthur_br07/)
 
-## 📑 License
+## 📝 License
 
 This project is licensed under the [GNU GENERAL PUBLIC LICENSE](LICENSE).
 
