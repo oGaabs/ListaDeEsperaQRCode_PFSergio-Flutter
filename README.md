@@ -19,7 +19,7 @@
 
 Este repositório contém um aplicativo Flutter para gerenciar uma lista de espera usando leitura de QR Code. 
 
-O aplicativo permite que os usuários sejam adicionados à lista de espera ou removidos, com base no QR Code lido, assim como as informações do usuario, ao ler ou gerar o QR Code na tela inicial, o aplicativo passa o conteúdo do QR Code para a tela da Lista de Espera, onde ocorre uma chamada à API fornecida pelo QR Code.
+O aplicativo permite que os usuários sejam adicionados à lista de espera ou removidos, com base no QR Code lido, assim como as informações das pessoas, consumindo uma API de lista de espera.
 
 </div>
 
